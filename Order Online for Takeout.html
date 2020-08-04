@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Order Online for Takeout</title>
+    <meta charset="UTF-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/4ff7bb62b8.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link href="plugins/SmartCart/dist/css/smart_cart.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="Home Page.css">
+    <link rel="stylesheet" href="css/OrderOnline.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Playball&display=swap"
+        type="text/css">
+
+    <script id="item-template" type="text/x-handlebars-template">
+        <div class="sc-product-item">
+            <div class="row mt-3 mb-3">
+                <div class="col-md-3">
+                    <p data-name="product_name">{{itemName}}</p>
+                </div>
+                <div class="col-md-3">
+                    <p data-name="product_desc">{{itemDescription}}</p>
+                </div>
+                <div class="col-md">
+                    <input type="text" class="form-control" name="product_quantity" value="0" />
+                </div>
+                <div class="col-md">
+                    <input type="text" class="form-control" name="product_price" value="{{itemPrice}}"
+                           readonly />
+                    <input name="product_id" value="{{itemValue}}" type="hidden" />
+                </div>
+                <div class="col-md">
+                    <button class="sc-add-to-cart btn btn-primary">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </script>
+</head>
+
+<body>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="js/googleSheetsApiConfig.js"></script>
+    <script src="js/orderOnlineLoadData.js"></script>
+
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <span><a class="navbar-brand" href="Home Page.html"> Cafe Chang </a></span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navigation">
+                    <ul class="navbar-nav ml-auto">
+                        <li><a class="nav-item nav-link" href="Home Page.html">Home <span
+                                    class="sr-only">(current)</span></a></li>
+                        <li><a class="nav-item nav-link" href="Hours and Locations.html">Hours and Locations</a></li>
+                        <li><a class="nav-item nav-link active" href="#">Order Online -Takeout </a></li>
+                        <li><a class="nav-item nav-link" href="About Us.html">About Us </a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Accordion tabs -->
+    <div class="form" id="accordion">
+        <h3>1. Select Order Date/Time</h3>
+        <div>
+            <div class="form-group">
+                <label for="order-date">Order Date:</label>
+                <select class="form-control" id="order-date">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="order-time">Order Time:</label>
+                <select class="form-control" id="order-time">
+                </select>
+            </div>
+        </div>
+        <h3>2. Add Items to Cart</h3>
+        <div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            Takeout Items
+                        </div>
+                        <div class="card-body">
+                            <div id="itemsHeader" class="row mb-3">
+                                <div class="col-md-3">
+                                    <label><b>Item Name</b></label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label><b>Item Description</b></label>
+                                </div>
+                                <div class="col-md">
+                                    <label><b>Quantity</b></label>
+                                </div>
+                                <div class="col-md">
+                                    <label><b>Price</b></label>
+                                </div>
+                                <div class="col-md">
+                                    <label><b>Add to Cart</b></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            Takeout Cart
+                        </div>
+                        <div class="card-body">
+                            <div id="smartcart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>3. Checkout</h3>
+        <div>
+            <form class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" required>
+                    <div class="invalid-feedback">
+                        Please enter a name.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNum">Phone Number:</label>
+                    <input type="text" class="form-control" id="phoneNum" placeholder="Phone number"
+                        pattern="^[0-9]{10}$" required>
+                    <div class="invalid-feedback">
+                        Please enter a 10-digit phone number.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-check-label" for="creditCardNum">Credit Card Number:</label>
+                    <input type="text" class="form-control" id="creditCardNum" placeholder="Enter credit card number"
+                        pattern="^[0-9]{16}$" required>
+                    <div class="invalid-feedback">
+                        Please enter a 16-digit credit card number.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
+            </form>
+        </div>
+    </div>
+    <div id="dialog-message" title="Successful submission">
+        <p>
+            You have successfully placed a takeout order with Cafe Chang. We hope you enjoy your food!
+        </p>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Contact</h3>
+                    <p><em>(303) 303-3033</em></p>
+                    <p><em>info@cafechang.com</em></p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Restaurant Hours</h3>
+                    <ul>
+                        <li>
+                            <p>Dinner</p>
+                            <ul>
+                                <li>Sun-Thu / 5pm-10pm</li>
+                                <li>Fri-Sat / 5pm-11pm</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p>Lunch</p>
+                            <ul>
+                                <li>Mon-Fri / 11:30am-5pm</li>
+                                <li>Sat-Sun / 11:30am-3:30pm</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Location</h3>
+                    <p><em>10239 W. Sunset Ave, Sunset beach, CA 80932</em></p>
+                </div>
+            </div>
+            <p>Copyright &copy; 2019 Cafe Chang. All Rights Reserved. Site by Kyle Voon, Elizabeth So, John Haney</p>
+        </div>
+    </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="plugins/SmartCart/dist/js/jquery.smartCart.min.js" type="text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.amd.min.js"></script>
+    <script src="js/orderOnline.js"></script>
+</body>
+
+</html>

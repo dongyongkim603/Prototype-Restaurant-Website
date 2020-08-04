@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CDN Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!----CDN for fontawesome-->
+  <script src="https://kit.fontawesome.com/4ff7bb62b8.js"></script>
+  <!--main css-->
+  <link rel="stylesheet" href="home page.css">
+  <!--Google Font-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Playball&display=swap" type="text/css">
+  <title>Cafe Chang | Home Page</title>
+
+  <script id="item-template" type="text/x-handlebars-template">
+      <div class="single-item d-flex justify-content-between my-3 p-3">
+          <div class="single-item-text">
+              <h3 class="text-uppercase text-dark">{{itemName}}</h3>
+              <h4 class="text-muted">{{itemDescription}}</h4>
+          </div>
+          <div class="single-item-price align-self-end">
+              <h3 class="text-uppercase text-dark">${{itemPrice}}</h3>
+          </div>
+      </div>
+  </script>
+  <script id="item-special-template" type="text/x-handlebars-template">
+      <div class="single-item d-flex justify-content-between my-3 p-3 special">
+          <div class="single-item-text">
+              <h3 class="text-uppercase text-dark">{{itemName}}</h3>
+              <h4 class="text-muted">{{itemDescription}}</h4>
+          </div>
+          <div class="single-item-price align-self-end">
+              <h3 class="text-uppercase text-dark">${{itemPrice}}</h3>
+          </div>
+          <h3 class="special-text text-capitalize">chef selection</h3>
+      </div>
+  </script>
+</head>
+
+<body>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="js/googleSheetsApiConfig.js"></script>
+  <script src="js/homeLoadData.js"></script>
+
+  <!-- Navigation Bar -->
+  <div class="header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <span><a class="navbar-brand" href="Home Page.html"> Cafe Chang </a></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav ml-auto">
+            <li><a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a></li>
+            <li><a class="nav-item nav-link" href="Hours and Locations.html">Hours and Locations</a></li>
+            <li><a class="nav-item nav-link" href="Order Online for Takeout.html">Order Online -Takeout </a></li>
+            <li><a class="nav-item nav-link" href="About Us.html">About Us </a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Front Page Entry -->
+  <section class="banner text-center">
+    <div class="starter_container">
+      <div class="follow_container">
+        <div class="col-md-6 col-md-3 col-sm-6 col-xs-12">
+          <h2 class="top-title"> Cafe Chang </h2>
+          <h2 class="white second-title">" Authentic Fine Dining Asian Cuisine "</h2>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menus">
+    <div class="item-container">
+      <span>
+        <h2>Menu</h2>
+      </span>
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="menu-item">
+            <a href="#Appetizers">
+              <img src="images/appetizer.jpg">
+              <h4 class="text-center item-link">Appetizer</h4>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="menu-item">
+            <a href="#Lunch">
+              <img src="images/lunch.jpg">
+              <h4 class="text-center item-link">Lunch</h4>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="menu-item">
+            <a href="#Dinner">
+              <img src="images/dinner.jpg">
+              <h4 class="text-center item-link">Dinner</h4>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="menu-item">
+            <a href="#Cocktails">
+              <img src="images/cocktail.jpg">
+              <h4 class="text-center item-link">Cocktails</h4>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appetizer Food Section -->
+  <section class="appetizer py-5 my-5" id="Appetizers">
+    <div class="container">
+      <span class="heading">
+        <h2>Appetizers</h2>
+      </span>
+      <div class="row">
+        <!-----First Column-->
+        <div id="appetizer-col1" class="col-md-6">
+        </div>
+        <!----End of first column-->
+
+        <!----Start of second column-->
+        <div id="appetizer-col2" class="col-md-6">
+          <!----End of second column-->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!----End of Appetizer Food Section-->
+
+  <!-- Lunch Food Section -->
+  <section class="lunch py-5 my-5" id="Lunch">
+    <div class="container">
+      <span class="heading">
+        <h2>Lunch</h2>
+      </span>
+      <div class="row">
+        <!-----First Column-->
+        <div id="lunch-col1" class="col-md-6">
+        </div>
+        <!----End of first column-->
+
+        <!----Start of second column-->
+        <div id="lunch-col2" class="col-md-6">
+          <!----End of second column-->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!----End of Lunch Food Section-->
+
+  <!-- dinner Food Section -->
+  <section class="dinner py-5 my-5" id="Dinner">
+    <div class="container">
+      <span class="heading">
+        <h2>Dinner</h2>
+      </span>
+      <div class="row">
+        <!-----First Column-->
+        <div id="dinner-col1" class="col-md-6">
+        </div>
+        <!----End of first column-->
+
+        <!----Start of second column-->
+        <div id="dinner-col2" class="col-md-6">
+          <!----End of second column-->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!----End of Dinner Food Section-->
+
+  <!-- Cocktail Section -->
+  <section class="cocktails py-5 my-5" id="Cocktails">
+    <div class="container">
+      <span class="heading">
+        <h2>Cocktails</h2>
+      </span>
+      <div class="row">
+        <!-----First Column-->
+        <div id="cocktail-col1" class="col-md-6">
+        </div>
+        <!----End of first column-->
+
+        <!----Start of second column-->
+        <div id="cocktail-col2" class="col-md-6">
+          <!----End of second column-->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!----End of Cocktails Section-->
+
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Contact</h3>
+          <p><em>(303) 303-3033</em></p>
+          <p><em>info@cafechang.com</em></p>
+        </div>
+        <div class="col-md-4">
+          <h3>Restaurant Hours</h3>
+          <ul>
+            <li>
+              <p>Dinner</p>
+              <ul>
+                <li>Sun-Thu / 5pm-10pm</li>
+                <li>Fri-Sat / 5pm-11pm</li>
+              </ul>
+            </li>
+            <li>
+              <p>Lunch</p>
+              <ul>
+                <li>Mon-Fri / 11:30am-5pm</li>
+                <li>Sat-Sun / 11:30am-3:30pm</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Location</h3>
+          <p><em>10239 W. Sunset Ave, Sunset beach, CA 80932</em></p>
+        </div>
+      </div>
+      <p>Copyright &copy; 2019 Cafe Chang. All Rights Reserved. Site by Kyle Voon, Elizabeth So, John Haney</p>
+
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.amd.min.js"></script>
+</body>
+
+</html>

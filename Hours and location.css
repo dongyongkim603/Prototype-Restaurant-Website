@@ -1,0 +1,67 @@
+/*------------- Hours and Location ------------*/
+
+section.facade {
+	padding: 5%;
+	background-image: url(images/facade.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	text-align: center;
+}
+.facade h2 {
+  color:white;
+  background: #1E1E1E !important;
+  opacity: 0.95;
+}
+
+.facade h5 {
+  color:white;
+  background: #1E1E1E !important;
+  opacity: 0.95; 
+}
+
+html,
+body {
+  margin: 0;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+/*---map div boxes---*/
+#map {
+  padding: 10px;
+  height: 400px;
+  width: 100%;
+}
+
+#legend {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  padding: 10px;
+  margin: 10px;
+  border: 3px solid #000;
+}
+
+#legend h3 {
+  margin-top: 0;
+}
+
+#legend img {
+  vertical-align: middle;
+}
+
+
+  .column2 {
+    color: white;
+    width: 50%;
+    padding: 10px;
+    font-family: 'pacifico';
+  }
+
+  .row1:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
